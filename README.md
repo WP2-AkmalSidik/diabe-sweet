@@ -29,6 +29,28 @@ You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
+# Pedoman Commit Message
+
+**Tujuan:**
+* Menjaga konsistensi riwayat perubahan.
+* Memudahkan review code.
+
+**Format:**
+`<tipe>(<scope>): <deskripsi>`
+
+**Contoh:**
+* `feat(login): tambahkan autentikasi dua faktor`
+* `fix(navbar): perbaiki tampilan dropdown`
+
+**Tipe Commit:**
+* feat: Fitur baru
+* fix: Perbaikan bug
+* docs: Dokumentasi
+* style: Format kode
+* refactor: Ubah struktur kode
+* test: Tambah/ubah test
+* chore: Tugas lain
+
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
