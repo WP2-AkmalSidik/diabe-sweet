@@ -19,7 +19,7 @@ return new class extends Migration
             $table->float('tinggi_badan')->nullable();
             $table->float('berat_badan')->nullable();
             $table->integer('umur')->nullable();
-            $table->enum('role', ['Admin', 'User', 'Dokter'])->default('User');
+            $table->tinyInteger('role')->default(0);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
