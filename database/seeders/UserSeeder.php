@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -16,16 +17,18 @@ class UserSeeder extends Seeder
         // Seeder untuk Admin
         DB::table('users')->insert([
             'name' => 'Admin',
-            'foto' => null, // optional
-            'jenis_kelamin' => 'Pria', // or 'Wanita'
-            'tinggi_badan' => null, // optional
-            'berat_badan' => null, // optional
-            'umur' => null, // optional
+            'alamat' => 'Jl. Contoh Admin', // alamat opsional
+            'tinggi_badan' => 175, // opsional
+            'berat_badan' => 70, // opsional
+            'tanggal_lahir' => '1980-01-01', // opsional
+            'jenis_kelamin' => 'Pria', // atau 'Wanita'
+            'no_hp' => '08123456789', // opsional
+            'foto' => null, // opsional
             'role' => 1, // 1 untuk Admin
             'email' => 'admin@diabesweet.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password123'), // ganti dengan password yang aman
-            'remember_token' => \Illuminate\Support\Str::random(10),
+            'remember_token' => Str::random(10),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -33,16 +36,18 @@ class UserSeeder extends Seeder
         // Seeder untuk User
         DB::table('users')->insert([
             'name' => 'User',
-            'foto' => null, // optional
-            'jenis_kelamin' => 'Wanita', // or 'Pria'
-            'tinggi_badan' => null, // optional
-            'berat_badan' => null, // optional
-            'umur' => null, // optional
+            'alamat' => 'Jl. Contoh User', // opsional
+            'tinggi_badan' => 160, // opsional
+            'berat_badan' => 55, // opsional
+            'tanggal_lahir' => '1995-01-01', // opsional
+            'jenis_kelamin' => 'Wanita', // atau 'Pria'
+            'no_hp' => '08123456788', // opsional
+            'foto' => null, // opsional
             'role' => 0, // 0 untuk User
             'email' => 'user@diabesweet.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password123'), // ganti dengan password yang aman
-            'remember_token' => \Illuminate\Support\Str::random(10),
+            'remember_token' => Str::random(10),
             'created_at' => now(),
             'updated_at' => now(),
         ]);

@@ -16,17 +16,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'foto',
-        'jenis_kelamin',
-        'tinggi_badan',
-        'berat_badan',
-        'umur',
-        'role',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     public function pengingatObat()
     {
