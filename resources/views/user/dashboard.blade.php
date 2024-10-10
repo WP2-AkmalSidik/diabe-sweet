@@ -100,15 +100,15 @@
       <div class="relative w-full flex slider gap-3">
         <!-- Slide 1 -->
         <div class="w-full flex-shrink-0">
-          <img src="../assets/img1.png" class="w-full h-full object-cover" alt="Image 1">
+          <img src="{{ asset('assets/img1.png') }}" class="w-full h-full object-cover" alt="Image 1">
         </div>
         <!-- Slide 2 -->
         <div class="w-full flex-shrink-0">
-          <img src="../assets/img2.png" class="w-full h-full object-cover" alt="Image 2">
+          <img src="{{ asset('assets/img2.png') }}" class="w-full h-full object-cover" alt="Image 2">
         </div>
         <!-- Slide 3 -->
         <div class="w-full flex-shrink-0">
-          <img src="../assets/img3.png" class="w-full h-full object-cover" alt="Image 3">
+          <img src="{{ asset('assets/img3.png') }}" class="w-full h-full object-cover" alt="Image 3">
         </div>
       </div>
     </div>

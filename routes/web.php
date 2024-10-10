@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\AdminController;
 
 Route::get('/', function () {
     return view('welcome.greet');
@@ -10,13 +12,23 @@ Route::get('/diabe-sweet', function () {
     return view('welcome.diabe');
 })->name('diabe');
 
-Route::get('/dashboard', function () {
-    return view('user.dashboard');
-})->middleware(['auth', 'verified', 'rolemanager:user'])->name('dashboard');
+//admin Routes
+Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::prefix('admin')->group(function () {
+            Route::get('/', 'index')->name('admin');
+        });
+    });
+});
 
-Route::get('/admin', function () {
-    return view('admin');
-})->middleware(['auth', 'verified', 'rolemanager:admin'])->name('admin');
+//user Routes
+Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
+    Route::controller(UserController::class)->group(function () {
+        Route::prefix('user')->group(function () {
+            Route::get('/', 'index')->name('dashboard');
+        });
+    });
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -24,4 +36,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
