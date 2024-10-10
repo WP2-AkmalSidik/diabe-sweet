@@ -4,11 +4,14 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome.greet');
 });
+Route::get('/diabe-sweet', function () {
+    return view('welcome.diabe');
+})->name('diabe');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.dashboard');
 })->middleware(['auth', 'verified', 'rolemanager:user'])->name('dashboard');
 
 Route::get('/admin', function () {
