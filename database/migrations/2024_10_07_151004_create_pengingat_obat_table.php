@@ -16,9 +16,11 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nama_obat');
             $table->integer('jumlah_obat');
-            $table->timestamp('waktu_makan_obat');
+            $table->string('jenis_obat');
+            $table->date('tanggal'); // Ubah tipe menjadi date
+            $table->time('pukul'); // Ubah tipe menjadi time
             $table->enum('sebelum_sesudah_makan', ['Sebelum', 'Sesudah']);
-            $table->enum('status', ['Sudah', 'Terlewatkan']);
+            $table->enum('status', ['Sudah', 'Terlewatkan'])->default('Terlewatkan'); // Tambahkan default
             $table->timestamps();
         });
     }

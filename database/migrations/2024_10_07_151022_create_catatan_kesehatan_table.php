@@ -4,32 +4,26 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateCatatanKesehatanTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('catatan_kesehatan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Mengaitkan ke pengguna
             $table->integer('umur');
-            $table->float('tinggi_badan');
-            $table->float('berat_badan');
-            $table->float('berat_badan_ideal');
-            $table->float('asupan_air_harian');
-            $table->float('kadar_glukosa');
-            $table->string('kategori_glukosa');
+            $table->string('kategori');
+            $table->float('gula');
+            $table->float('sistolik');
+            $table->float('diastolik');
+            $table->float('berat');
+            $table->float('tinggi');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('catatan_kesehatan');
     }
-};
+}

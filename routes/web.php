@@ -1,10 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CatatanKesehatanController;
+use App\Http\Controllers\User\DukunganSosialController;
+use App\Http\Controllers\User\PengingatObatController;
+use App\Http\Controllers\User\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome.greet');
@@ -21,7 +23,15 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->prefix('admin')->g
 //user Routes
 Route::middleware(['auth', 'verified', 'rolemanager:user'])->prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::get('/kesehatan', [CatatanKesehatanController::class, 'kesehatan'])->name('kesehatan');
+    // Route::post('/kesehatan', [CatatanKesehatanController::class, 'store'])->name('kesehatan.simpan');
+    Route::post('/kesehatan/simpan', [CatatanKesehatanController::class, 'storeOrUpdate'])->name('kesehatan.simpan');
+    Route::get('/dukungan', [DukunganSosialController::class, 'index'])->name('dukungan');
+    Route::get('/pengingat', [PengingatObatController::class, 'index'])->name('pengingatObat');
+    Route::post('/pengingat', [PengingatObatController::class, 'store'])->name('pengingat.store'); // Ubah sesuai dengan nama yang lebih konsisten
+    Route::delete('/pengingat/{id}', [PengingatObatController::class, 'destroy'])->name('pengingat.destroy');
+
 });
 
 Route::middleware('auth')->group(function () {
