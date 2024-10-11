@@ -29,7 +29,9 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->prefix('user')->gro
     Route::post('/kesehatan/simpan', [CatatanKesehatanController::class, 'storeOrUpdate'])->name('kesehatan.simpan');
     Route::get('/dukungan', [DukunganSosialController::class, 'index'])->name('dukungan');
     Route::get('/pengingat', [PengingatObatController::class, 'index'])->name('pengingatObat');
-    Route::post('/pengingat', [PengingatObatController::class, 'store'])->name('pengingat.store'); // Ubah sesuai dengan nama yang lebih konsisten
+    Route::post('/pengingat', [PengingatObatController::class, 'store'])->name('pengingat.store');
+    Route::get('/pengingat-obat/update-status-sudah/{id}', [PengingatObatController::class, 'updateStatusSudah'])->name('update-status-sudah');
+    Route::get('/pengingat-obat/update-status-terlewat/{id}', [PengingatObatController::class, 'updateStatusTerlewat'])->name('update-status-terlewat');
     Route::delete('/pengingat/{id}', [PengingatObatController::class, 'destroy'])->name('pengingat.destroy');
 
 });

@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class PengingatObat extends Model
 {
-    protected $table = 'pengingat_obat';
-    protected $fillable = [
-        'user_id', 'nama_obat', 'jumlah_obat', 'jenis_obat', 'waktu_makan_obat', 'sebelum_sesudah_makan', 'status',
-    ];
+    protected $guarded = [];
 
     public function user()
     {

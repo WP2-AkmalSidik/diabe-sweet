@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengingat_obat', function (Blueprint $table) {
+        Schema::create('pengingat_obats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('nama_obat');
-            $table->integer('jumlah_obat');
-            $table->string('jenis_obat');
-            $table->date('tanggal'); // Ubah tipe menjadi date
-            $table->time('pukul'); // Ubah tipe menjadi time
-            $table->enum('sebelum_sesudah_makan', ['Sebelum', 'Sesudah']);
-            $table->enum('status', ['Sudah', 'Terlewatkan'])->default('Terlewatkan'); // Tambahkan default
+            $table->string('obat'); // Sesuaikan dengan nama input dari modal
+            $table->integer('jml_obat'); // Sesuaikan dengan nama input dari modal
+            $table->string('jenis_obat'); // Sesuaikan dengan nama input dari modal
+            $table->date('tanggal'); // Sesuaikan dengan nama input dari modal
+            $table->time('pukul'); // Sesuaikan dengan nama input dari modal
+            $table->enum('kategori', ['Sebelum', 'Sesudah']); // Sesuaikan dengan nama input dari modal
+            $table->enum('status', ['Menunggu', 'Sudah', 'Terlewatkan'])->default('Menunggu'); // Tambahkan default
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengingat_obat');
+        Schema::dropIfExists('pengingat_obats');
     }
 };
