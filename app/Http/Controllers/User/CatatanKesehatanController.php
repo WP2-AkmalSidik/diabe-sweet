@@ -55,4 +55,15 @@ class CatatanKesehatanController extends Controller
 
         return redirect()->route('kesehatan')->with('success', 'Data berhasil disimpan!');
     }
+    public function destroy($id)
+    {
+        $catatanKesehatan = CatatanKesehatan::where('id', $id)->where('user_id', auth()->user()->id)->first();
+
+        if ($catatanKesehatan) {
+            $catatanKesehatan->delete();
+            return redirect()->route('kesehatan')->with('success', 'Catatan kesehatan berhasil dihapus.');
+        } else {
+            return redirect()->route('kesehatan')->with('error', 'Catatan kesehatan tidak ditemukan atau tidak dapat dihapus.');
+        }
+    }
 }

@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
 <section
-    class="h-[100vh] w-[350px] m-auto overflow-hidden bg-[#FF76CE] scale-90 bg-cover bg-center rounded-3xl flex flex-col items-center p-7">
+    class="h-[100vh] w-[350px] m-auto overflow-hidden bg-[#FF76CE] scale-90 bg-cover bg-center rounded-3xl flex flex-col items-center p-7 container-snap overflow-y-auto">
     <a href="{{route('dashboard')}}" class="absolute left-7 top-8">
         <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="scale-75">
             <path d="M11 2L2 11L11 20" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
@@ -17,7 +17,7 @@
     </h2>
     <div class="flex flex-row justify-center items-center gap-2">
         @if ($catatanKesehatan)
-        <!-- Cek jika catatan kesehatan sudah ada -->
+        <!-- Jika catatan kesehatan sudah ada, tampilkan tombol Edit -->
         <!-- EDIT -->
         <a href="#" class="p-2 mt-2 bg-white rounded-lg" onclick="openModal()">
             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +26,33 @@
                     stroke="#FF76CE" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
+
+        <!-- DELETE -->
+        <!-- Tombol hapus, hanya tampil jika catatan kesehatan ada -->
+        <form action="{{ route('kesehatan.delete', $catatanKesehatan->id) }}" method="POST"
+            onsubmit="return confirm('Apakah Anda yakin ingin menghapus catatan ini?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="p-2 mt-2 bg-white rounded-lg">
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="scale-110">
+                    <path d="M13.2951 3.55666H0.705566" stroke="#FF76CE" stroke-width="1.11083"
+                        stroke-linecap="round" />
+                    <path
+                        d="M12.0609 5.40806L11.7202 10.5172C11.5892 12.4833 11.5236 13.4664 10.883 14.0657C10.2425 14.665 9.25722 14.665 7.28675 14.665H6.71408C4.74357 14.665 3.75834 14.665 3.11775 14.0657C2.47717 13.4664 2.41163 12.4833 2.28055 10.5172L1.93994 5.40806"
+                        stroke="#FF76CE" stroke-width="1.11083" stroke-linecap="round" />
+                    <path d="M5.14893 7.25945L5.5192 10.9622" stroke="#FF76CE" stroke-width="1.11083"
+                        stroke-linecap="round" />
+                    <path d="M8.85172 7.25945L8.48145 10.9622" stroke="#FF76CE" stroke-width="1.11083"
+                        stroke-linecap="round" />
+                    <path
+                        d="M2.92725 3.55667C2.96863 3.55667 2.98932 3.55667 3.00808 3.55619C3.61788 3.54074 4.15584 3.153 4.36335 2.57937C4.36973 2.56172 4.37627 2.5421 4.38935 2.50283L4.46126 2.28714C4.52263 2.10301 4.55332 2.01095 4.59402 1.93278C4.75643 1.62091 5.05689 1.40434 5.40412 1.3489C5.49115 1.335 5.58821 1.335 5.78231 1.335H8.21829C8.41239 1.335 8.50948 1.335 8.5965 1.3489C8.94374 1.40434 9.24419 1.62091 9.40659 1.93278C9.44732 2.01095 9.47798 2.10301 9.53937 2.28714L9.61128 2.50283C9.62431 2.54205 9.6309 2.56174 9.63727 2.57937C9.84478 3.153 10.3827 3.54074 10.9926 3.55619C11.0113 3.55667 11.032 3.55667 11.0734 3.55667"
+                        stroke="#FF76CE" stroke-width="1.11083" />
+                </svg>
+            </button>
+        </form>
         @else
+        <!-- Jika catatan kesehatan belum ada, tampilkan tombol Tambah -->
         <!-- ADD -->
         <a href="#" class="p-2 mt-2 bg-white rounded-lg" onclick="openModal()">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,25 +61,8 @@
             </svg>
         </a>
         @endif
-
-        <!-- DELETE -->
-        <a href="#" class="p-2 mt-2 bg-white rounded-lg">
-            <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
-                class="scale-110">
-                <path d="M13.2951 3.55666H0.705566" stroke="#FF76CE" stroke-width="1.11083" stroke-linecap="round" />
-                <path
-                    d="M12.0609 5.40806L11.7202 10.5172C11.5892 12.4833 11.5236 13.4664 10.883 14.0657C10.2425 14.665 9.25722 14.665 7.28675 14.665H6.71408C4.74357 14.665 3.75834 14.665 3.11775 14.0657C2.47717 13.4664 2.41163 12.4833 2.28055 10.5172L1.93994 5.40806"
-                    stroke="#FF76CE" stroke-width="1.11083" stroke-linecap="round" />
-                <path d="M5.14893 7.25945L5.5192 10.9622" stroke="#FF76CE" stroke-width="1.11083"
-                    stroke-linecap="round" />
-                <path d="M8.85172 7.25945L8.48145 10.9622" stroke="#FF76CE" stroke-width="1.11083"
-                    stroke-linecap="round" />
-                <path
-                    d="M2.92725 3.55667C2.96863 3.55667 2.98932 3.55667 3.00808 3.55619C3.61788 3.54074 4.15584 3.153 4.36335 2.57937C4.36973 2.56172 4.37627 2.5421 4.38935 2.50283L4.46126 2.28714C4.52263 2.10301 4.55332 2.01095 4.59402 1.93278C4.75643 1.62091 5.05689 1.40434 5.40412 1.3489C5.49115 1.335 5.58821 1.335 5.78231 1.335H8.21829C8.41239 1.335 8.50948 1.335 8.5965 1.3489C8.94374 1.40434 9.24419 1.62091 9.40659 1.93278C9.44732 2.01095 9.47798 2.10301 9.53937 2.28714L9.61128 2.50283C9.62431 2.54205 9.6309 2.56174 9.63727 2.57937C9.84478 3.153 10.3827 3.54074 10.9926 3.55619C11.0113 3.55667 11.032 3.55667 11.0734 3.55667"
-                    stroke="#FF76CE" stroke-width="1.11083" />
-            </svg>
-        </a>
     </div>
+
     <div class="flex flex-col mt-2 w-full gap-y-4">
         @if ($catatanKesehatan)
         <div class="bg-white rounded-xl py-4 flex flex-col justify-center items-center gap-2">
@@ -125,9 +134,9 @@
                     $statusBeratBadan='Ideal' ; } elseif ($imT>= 25 && $imT < 29.9) { $statusBeratBadan='Kelebihan' ; }
                         else { $statusBeratBadan='Obesitas' ; } @endphp <small
                         class="text-xs text-center font-bold text-black p-2">
-                        Berat: {{ $berat }} KG<br>
+                        {{ $berat }} KG - {{ $statusBeratBadan }} <br>
                         <!-- IMT: {{ number_format($imT, 2) }}<br> -->
-                        Berat Ideal: {{ number_format($beratIdeal, 2) }} KG<br>
+                        Idealnya : {{ number_format($beratIdeal) }} KG<br>
                         <!-- Status: {{ $statusBeratBadan }}<br> -->
                         </small>
         </div>

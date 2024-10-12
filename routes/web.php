@@ -29,6 +29,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->prefix('user')->gro
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::get('/kesehatan', [CatatanKesehatanController::class, 'kesehatan'])->name('kesehatan');
     Route::post('/kesehatan/simpan', [CatatanKesehatanController::class, 'storeOrUpdate'])->name('kesehatan.simpan');
+    Route::delete('/kesehatan/{id}', [CatatanKesehatanController::class, 'destroy'])->name('kesehatan.delete');
     Route::get('/dukungan', [DukunganSosialController::class, 'index'])->name('dukungan');
     Route::get('/pengingat', [PengingatObatController::class, 'index'])->name('pengingatObat');
     Route::post('/pengingat', [PengingatObatController::class, 'store'])->name('pengingat.store');
