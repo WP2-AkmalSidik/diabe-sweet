@@ -9,7 +9,6 @@ class CatatanKesehatanController extends Controller
 {
     public function kesehatan()
     {
-        // Ambil data pengguna yang sedang login
         $user = auth()->user();
         $catatanKesehatan = CatatanKesehatan::where('user_id', $user->id)->first();
 
@@ -29,10 +28,8 @@ class CatatanKesehatanController extends Controller
             'tinggi' => 'required|numeric',
         ]);
 
-        // Ambil data catatan kesehatan pengguna
         $catatanKesehatan = CatatanKesehatan::where('user_id', auth()->user()->id)->first();
 
-        // Jika data sudah ada, lakukan update
         if ($catatanKesehatan) {
             $catatanKesehatan->update([
                 'umur' => $request->umur,
@@ -44,7 +41,6 @@ class CatatanKesehatanController extends Controller
                 'tinggi' => $request->tinggi,
             ]);
         } else {
-            // Jika data belum ada, lakukan store
             CatatanKesehatan::create([
                 'user_id' => auth()->user()->id,
                 'umur' => $request->umur,
@@ -57,7 +53,6 @@ class CatatanKesehatanController extends Controller
             ]);
         }
 
-        // Redirect ke halaman sebelumnya dengan pesan sukses
         return redirect()->route('kesehatan')->with('success', 'Data berhasil disimpan!');
     }
 }

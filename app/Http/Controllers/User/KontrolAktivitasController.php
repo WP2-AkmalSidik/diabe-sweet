@@ -64,17 +64,12 @@ class KontrolAktivitasController extends Controller
 
     public function destroy($id)
     {
-        // Cek apakah data aktivitas ini milik pengguna yang sedang login
         $aktivitas = KontrolAktivitas::where('id', $id)->where('user_id', Auth::id())->first();
 
         if ($aktivitas) {
-            // Hapus data aktivitas
             $aktivitas->delete();
-
-            // Redirect dengan pesan sukses
             return redirect()->route('kontrol.aktivitas')->with('success', 'Data aktivitas berhasil dihapus.');
         } else {
-            // Redirect dengan pesan error jika data tidak ditemukan atau tidak milik user
             return redirect()->route('kontrol.aktivitas')->with('error', 'Data aktivitas tidak ditemukan atau tidak dapat dihapus.');
         }
     }

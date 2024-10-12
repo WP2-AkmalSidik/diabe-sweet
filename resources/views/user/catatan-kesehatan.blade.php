@@ -111,18 +111,15 @@
 
             // Ambil data umur dan jenis kelamin
             $umur = \Carbon\Carbon::parse($user->tanggal_lahir)->age;
-            $jenisKelamin = $user->jenis_kelamin; // Misalnya 'L' untuk laki-laki, 'P' untuk perempuan
+            $jenisKelamin = $user->jenis_kelamin;
 
             // Hitung berat badan ideal berdasarkan jenis kelamin
             if ($jenisKelamin === 'L') {
-            // Rumus untuk laki-laki
             $beratIdeal = ($tinggiM * 100) - 100; // Berat ideal = tinggi badan (cm) - 100
             } else {
-            // Rumus untuk perempuan
             $beratIdeal = ($tinggiM * 100) - 105; // Berat ideal = tinggi badan (cm) - 105
             }
 
-            // Tentukan status berat badan
             $statusBeratBadan = '';
             if ($imT < 18.5) { $statusBeratBadan='Kekurangan' ; } elseif ($imT>= 18.5 && $imT < 24.9) {
                     $statusBeratBadan='Ideal' ; } elseif ($imT>= 25 && $imT < 29.9) { $statusBeratBadan='Kelebihan' ; }
