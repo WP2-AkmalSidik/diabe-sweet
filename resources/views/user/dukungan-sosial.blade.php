@@ -34,13 +34,13 @@
             </div>
 
             <a href="#" class="bg-[#FF76CE] py-1 px-3 rounded-full text-[0.7rem] text-white font-semibold"
-                onclick="openModal()">
+                onclick="openModal(1)">
                 Detail
             </a>
         </div>
 
         <div class="bg-white border-2 border-[#FF76CE] rounded-xl p-1.5 flex flex-row justify-between items-center">
-            <img src="{{asset('assets/hati.png')}}" alt="" class="h-16" />
+            <img src="{{asset('assets/kaca pembesar.png')}}" alt="" class="h-16" />
 
             <div class="flex flex-col gap-1 w-[120px]">
                 <h1 class="text-[0.6rem] font-semibold">Bagaimana cara memilih makanan yang sehat?</h1>
@@ -52,13 +52,13 @@
             </div>
 
             <a href="#" class="bg-[#FF76CE] py-1 px-3 rounded-full text-[0.7rem] text-white font-semibold"
-                onclick="openModal()">
+                onclick="openModal(2)">
                 Detail
             </a>
         </div>
 
         <div class="bg-white border-2 border-[#FF76CE] rounded-xl p-1.5 flex flex-row justify-between items-center">
-            <img src="{{asset('assets/hati.png')}}" alt="" class="h-16" />
+            <img src="{{asset('assets/obat kedua.png')}}" alt="" class="h-16" />
 
             <div class="flex flex-col gap-1 w-[120px]">
                 <h1 class="text-[0.6rem] font-semibold">Siapa saja yang beresiko terkena penyakit Diabetes?</h1>
@@ -70,7 +70,7 @@
             </div>
 
             <a href="#" class="bg-[#FF76CE] py-1 px-3 rounded-full text-[0.7rem] text-white font-semibold"
-                onclick="openModal()">
+                onclick="openModal(3)">
                 Detail
             </a>
         </div>
@@ -85,11 +85,9 @@
 
             <!-- Form di dalam modal -->
             <form class="mt-4 flex flex-col gap-2" action="" method="">
-                <div
+                <div id="modalDescription"
                     class="bg-white px-5 py-2 border-2 border-[#FF76CE] rounded-md text-[0.7rem] mt-3 w-full text-start text-black">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis eos dolorum libero velit quia impedit
-                    officiis, modi sed id. Explicabo voluptates illum ut repellendus expedita temporibus velit quos,
-                    necessitatibus nam.
+                    
                 </div>
 
                 <button type="" class="bg-[#FF76CE] px-5 py-2 rounded-md font-bold mt-3 w-full text-center text-white"
@@ -101,8 +99,22 @@
 </section>
 <script>
 // Fungsi untuk membuka modal
-function openModal() {
-    document.getElementById("myModal").classList.remove("hidden");
+
+function openModal(deskripsi) {
+    const modal = document.getElementById('myModal');
+    const modalDescription = document.getElementById('modalDescription');
+
+    // Menetapkan deskripsi berdasarkan parameter yang diterima
+    if (deskripsi === 1) {
+        modalDescription.innerHTML = 'Diabetes, atau sering disebut sebagai diabetes mellitus, adalah suatu kondisi medis yang ditandai oleh tingginya kadar glukosa (gula) dalam darah. Ini terjadi karena tubuh tidak dapat memproduksi cukup insulin atau tidak dapat menggunakan insulin dengan efektif. Insulin adalah hormon yang dihasilkan oleh pankreas dan berfungsi untuk mengatur kadar gula darah.';
+    } else if (deskripsi === 2) {
+        modalDescription.innerHTML = 'Untuk memilih makanan yang sehat, utamakan konsumsi makanan utuh seperti buah, sayuran, biji-bijian, dan sumber protein tanpa lemak. Perhatikan komposisi gizi dengan membaca label makanan dan pilih berbagai warna makanan untuk mendapatkan nutrisi yang beragam. Batasi konsumsi gula tambahan dan lemak jenuh, serta kontrol porsi agar tidak berlebihan. Gunakan metode memasak yang sehat seperti merebus atau memanggang, dan tambahkan bumbu alami untuk meningkatkan rasa. Pastikan untuk minum cukup air dan buat rencana makan untuk membantu membuat pilihan yang lebih baik. Nikmati setiap makanan dengan tenang untuk mendukung kesehatan fisik dan mental Anda.';
+    } else if (deskripsi === 3) {
+        modalDescription.innerHTML = 'Beberapa kelompok memiliki risiko lebih tinggi terkena diabetes. Mereka yang memiliki riwayat keluarga dengan diabetes, berusia di atas 45 tahun, atau kelebihan berat badan berisiko lebih tinggi. Kurangnya aktivitas fisik, pola makan tidak sehat, serta hipertensi dan kolesterol tinggi juga dapat meningkatkan risiko. Wanita yang pernah mengalami diabetes gestasional dan individu dengan sindrom metabolik berisiko lebih besar terkena diabetes tipe 2. Selain itu, beberapa ras dan etnis, seperti Afro-Amerika dan Hispanik, juga memiliki kecenderungan lebih tinggi terhadap penyakit ini. Melakukan pemeriksaan kesehatan rutin dan menerapkan gaya hidup sehat sangat penting untuk mengurangi risiko diabetes.';
+    }
+
+    // Menampilkan modal
+    modal.classList.remove('hidden');
 }
 
 // Fungsi untuk menutup modal

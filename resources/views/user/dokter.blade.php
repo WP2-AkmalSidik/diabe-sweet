@@ -31,15 +31,15 @@
                 </div>
             </div>
 
-            <a href="https://wa.me/+6285861664398"
+            <a href="https://wa.me/087767633878" target="_blank"
                 class="bg-[#FF76CE] py-1 px-4 rounded-full text-[0.7rem] text-white font-bold">Chat</a>
         </div>
 
         <div class=" bg-white border-2 border-[#FF76CE] rounded-xl p-1.5 flex flex-row justify-between items-center">
-            <img src="{{asset('assets/dokter1.png')}}" alt="" class="h-20">
+            <img src="{{asset('assets/dokter2.png')}}" alt="" class="h-20">
 
             <div class="flex flex-col justify-between gap-1">
-                <h1 class="text-sm font-bold">Dr. Tya Yunari</h1>
+                <h1 class="text-sm font-bold">Dr. Hendra Wongso</h1>
                 <h2 class="text-sm text-gray-500">Spesialis Endokrin</h2>
 
                 <div class="flex flex-row gap-4 mt-2">
@@ -48,14 +48,14 @@
                 </div>
             </div>
 
-            <a class="bg-[#FF76CE] py-1 px-4 rounded-full text-[0.7rem] text-white font-bold">Chat</a>
+            <a href="https://wa.me/087767633878" target="_blank" class="bg-[#FF76CE] py-1 px-4 rounded-full text-[0.7rem] text-white font-bold">Chat</a>
         </div>
 
         <div class=" bg-white border-2 border-[#FF76CE] rounded-xl p-1.5 flex flex-row justify-between items-center">
-            <img src="{{asset('assets/dokter1.png')}}" alt="" class="h-20">
+            <img src="{{asset('assets/dokter3.png')}}" alt="" class="h-20">
 
             <div class="flex flex-col justify-between gap-1">
-                <h1 class="text-sm font-bold">Dr. Tya Yunari</h1>
+                <h1 class="text-sm font-bold">Dr. Rafli Sultan Sulaiman</h1>
                 <h2 class="text-sm text-gray-500">Spesialis Endokrin</h2>
 
                 <div class="flex flex-row gap-4 mt-2">
@@ -64,14 +64,14 @@
                 </div>
             </div>
 
-            <a class="bg-[#FF76CE] py-1 px-4 rounded-full text-[0.7rem] text-white font-bold">Chat</a>
+            <a href="https://wa.me/087767633878" target="_blank" class="bg-[#FF76CE] py-1 px-4 rounded-full text-[0.7rem] text-white font-bold">Chat</a>
         </div>
 
         <div class=" bg-white border-2 border-[#FF76CE] rounded-xl p-1.5 flex flex-row justify-between items-center">
-            <img src="{{asset('assets/dokter1.png')}}" alt="" class="h-20">
+            <img src="{{asset('assets/dokter4.png')}}" alt="" class="h-20">
 
             <div class="flex flex-col justify-between gap-1">
-                <h1 class="text-sm font-bold">Dr. Tya Yunari</h1>
+                <h1 class="text-sm font-bold">Dr. Nadine Maulan</h1>
                 <h2 class="text-sm text-gray-500">Spesialis Endokrin</h2>
 
                 <div class="flex flex-row gap-4 mt-2">
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <a class="bg-[#FF76CE] py-1 px-4 rounded-full text-[0.7rem] text-white font-bold">Chat</a>
+            <a href="https://wa.me/087767633878" target="_blank" class="bg-[#FF76CE] py-1 px-4 rounded-full text-[0.7rem] text-white font-bold">Chat</a>
         </div>
     </div>
 </section>
