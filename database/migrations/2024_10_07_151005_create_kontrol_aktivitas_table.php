@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('jenis_olahraga');
+            $table->date('tanggal');
             $table->timestamp('waktu_mulai');
             $table->timestamp('waktu_selesai');
-            $table->date('hari');
             $table->float('kalori_dibakar')->nullable();
             $table->timestamps();
         });

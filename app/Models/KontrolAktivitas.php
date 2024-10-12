@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class KontrolAktivitas extends Model
 {
     protected $fillable = [
-        'user_id', 'jenis_olahraga', 'waktu_mulai', 'waktu_selesai', 'hari','kalori_dibakar'
+        'user_id', 'jenis_olahraga', 'waktu_mulai', 'waktu_selesai', 'tanggal', 'kalori_dibakar',
     ];
 
     public function user()
@@ -15,4 +15,3 @@ class KontrolAktivitas extends Model
         return $this->belongsTo(User::class);
     }
 }
-

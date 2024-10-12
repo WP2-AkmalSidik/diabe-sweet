@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CatatanKesehatanController;
 use App\Http\Controllers\User\DokterController;
 use App\Http\Controllers\User\DukunganSosialController;
+use App\Http\Controllers\User\KontrolAktivitasController;
 use App\Http\Controllers\User\PengingatObatController;
 use App\Http\Controllers\User\PolaMakanController;
 use App\Http\Controllers\User\UserController;
@@ -35,6 +36,10 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->prefix('user')->gro
     Route::get('/pengingat-obat/update-status-terlewat/{id}', [PengingatObatController::class, 'updateStatusTerlewat'])->name('update-status-terlewat');
     Route::delete('/pengingat/{id}', [PengingatObatController::class, 'destroy'])->name('pengingat.destroy');
     Route::get('/dokter', [DokterController::class, 'index'])->name('dokter');
+    Route::get('/pola-makan', [PolaMakanController::class, 'index'])->name('pola.makan');
+    Route::get('/aktivitas', [KontrolAktivitasController::class, 'index'])->name('kontrol.aktivitas');
+    Route::post('/aktivitas/simpan', [KontrolAktivitasController::class, 'store'])->name('kontrol.aktivitas.simpan');
+    Route::delete('/aktivitas/hapus/{id}', [KontrolAktivitasController::class, 'destroy'])->name('kontrol.aktivitas.hapus');
 
 });
 

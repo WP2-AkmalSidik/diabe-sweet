@@ -81,7 +81,8 @@
 
         <!-- Kontrol Aktivitas Fisik -->
         <div class="flex flex-col gap-2 items-center">
-            <a href="#" class="w-[75px] h-[75px] bg-[#FF76CE] rounded-xl flex justify-center items-center">
+            <a href="{{ route('kontrol.aktivitas') }}"
+                class="w-[75px] h-[75px] bg-[#FF76CE] rounded-xl flex justify-center items-center">
                 <svg class="scale-110" width="30" height="30" viewBox="0 0 30 30" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -153,7 +154,7 @@
     </div>
 
     <div class="absolute bottom-0 h-16 w-full p-4 px-7 grid grid-cols-2">
-        <a href="#"
+        <a href="{{ route('dashboard') }}"
             class="flex flex-row justify-center items-center font-semibold text-xl gap-2 rounded-full text-[#FF76CE]">
             <svg class="scale-75" width="37" height="30" viewBox="0 0 37 30" fill="none"
                 xmlns="http://www.w3.org/2000/svg">

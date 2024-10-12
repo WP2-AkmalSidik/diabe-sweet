@@ -143,8 +143,12 @@
         </div>
     </div>
     @else
-    <div class="bg-white rounded-xl py-4 flex flex-col justify-center items-center gap-2">
-        <h1 class="text-base font-bold text-black">Data catatan kesehatan kosong.</h1>
+    <div class="w-full flex flex-col justify-center items-center">
+        <p class="text-base font-semibold">Catatan Belum Ada</p>
+        <div
+            class="mt-5 w-[150px] h-[150px] rounded-full border-8 border-white-500 flex justify-center items-center p-10">
+            <p class="text-[6rem] text-pink-500">!</p>
+        </div>
     </div>
     @endif
     </div>
