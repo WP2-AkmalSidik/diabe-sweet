@@ -7,18 +7,23 @@
     <h1 class="text-xl font-semibold mt-8 text-white">Profil Pengguna</h1>
 
     <div
-        class="rounded-full bg-white h-[100px] w-[100px] absolute z-10 left-6 top-[20%] flex flex-row justify-center items-center shadow-lg ">
+        class="rounded-full bg-white h-[100px] w-[100px] absolute z-10 left-6 top-[20%] flex flex-row justify-center items-center shadow-lg">
+        @if ($user->foto)
+        <img src="{{ asset('storage/' . $user->foto) }}" alt="Foto Profil"
+            class="rounded-full h-full w-full object-cover">
+        @else
         <svg width="60" height="55" viewBox="0 0 60 55" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M30 30.9375C39.3164 30.9375 46.875 24.0088 46.875 15.4688C46.875 6.92871 39.3164 0 30 0C20.6836 0 13.125 6.92871 13.125 15.4688C13.125 24.0088 20.6836 30.9375 30 30.9375ZM45 34.375H38.543C35.9414 35.4707 33.0469 36.0938 30 36.0938C26.9531 36.0938 24.0703 35.4707 21.457 34.375H15C6.71484 34.375 0 40.5303 0 48.125V49.8438C0 52.6904 2.51953 55 5.625 55H54.375C57.4805 55 60 52.6904 60 49.8438V48.125C60 40.5303 53.2852 34.375 45 34.375Z"
                 fill="#FF76CE" />
         </svg>
+        @endif
     </div>
     <div class="rounded-3xl h-[75%] w-full bg-white p-8 absolute bottom-0 flex flex-col gap-4">
         <div class="flex flex-row justify-between items-end">
             <div class="flex flex-col gap-2">
-                <h1 class="text-xl font-bold text-black mt-[3rem]">Alexandra</h1>
-                <h2 class="text-base text-[#FF76CE] font-semibold">Diabetes Parah</h2>
+                <h1 class="text-xl font-bold text-black mt-[3rem]">{{ $user->name }}</h1>
+                <h2 class="text-base text-[#FF76CE] font-semibold">{{ $statusDiabetes }}</h2>
             </div>
 
             <a href="#" class="p-2 bg-[#FF76CE] rounded-lg flex items-center justify-center mb-1" onclick="openModal()">
@@ -41,15 +46,15 @@
         <div class="w-full flex flex-row justify-between items-center">
             <div class="flex flex-col justify-between items-center">
                 <h3 class="text-[#FF76CE] font-semibold text-base">Umur</h3>
-                <h2 class="text-lg text-black font-semibold">20</h2>
+                <h2 class="text-lg text-black font-semibold">{{ $umur }}</h2>
             </div>
             <div class="flex flex-col justify-between items-center">
                 <h3 class="text-[#FF76CE] font-semibold text-base">Tinggi</h3>
-                <h2 class="text-lg text-black font-semibold">170</h2>
+                <h2 class="text-lg text-black font-semibold">{{ $user->tinggi_badan }}</h2>
             </div>
             <div class="flex flex-col justify-between items-center">
                 <h3 class="text-[#FF76CE] font-semibold text-base">Berat</h3>
-                <h2 class="text-lg text-black font-semibold">60</h2>
+                <h2 class="text-lg text-black font-semibold">{{ $user->berat_badan }}</h2>
             </div>
         </div>
         <div class="flex flex-col gap-4 items-start mt-4">
@@ -135,27 +140,27 @@
             </h1>
 
             <!-- Form di dalam modal -->
-            <form class="mt-4 flex flex-col gap-2" action="" method="">
-                <input type="file" name="name"
+            <form class="mt-4 flex flex-col gap-2" action="{{ route('profile.ubah') }}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                <input type="text" name="name" value="{{ old('name', $user->name) }}"
                     class="mt-1 px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#FF76CE] focus:ring-[#FF76CE] block w-full rounded-md sm:text-sm focus:ring-1"
-                    placeholder="Nama" />
+                    placeholder="Nama" required />
 
-                <input type="text" name="name"
-                    class="mt-1 px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#FF76CE] focus:ring-[#FF76CE] block w-full rounded-md sm:text-sm focus:ring-1"
-                    placeholder="Nama" />
+                <input type="file" name="foto"
+                    class="mt-1 px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#FF76CE] focus:ring-[#FF76CE] block w-full rounded-md sm:text-sm focus:ring-1" />
 
+                <!-- Tombol Submit dan Batal -->
+                <button type="submit"
+                    class="bg-[#FF76CE] px-5 py-2 rounded-md font-bold mt-5 w-full text-center text-white">
+                    Submit
+                </button>
+                <button type="button"
+                    class="bg-white px-5 py-2 border-2 border-[#FF76CE] rounded-md font-bold mt-3 w-full text-center text-[#FF76CE]"
+                    onclick="closeModal()">
+                    Batal
+                </button>
             </form>
-
-            <!-- Tombol Submit dan Batal -->
-            <button type="submit"
-                class="bg-[#FF76CE] px-5 py-2 rounded-md font-bold mt-5 w-full text-center text-white">
-                Submit
-            </button>
-            <button type=""
-                class="bg-white px-5 py-2 border-2 border-[#FF76CE] rounded-md font-bold mt-3 w-full text-center text-[#FF76CE]"
-                onclick="closeModal()">
-                Batal
-            </button>
         </div>
     </div>
 
@@ -166,31 +171,42 @@
             </h1>
 
             <!-- Form di dalam modal -->
-            <form class="mt-4 flex flex-col gap-2" action="" method="">
+            <form class="mt-4 flex flex-col gap-2" action="{{ route('password.update') }}" method="POST">
+                @csrf
+                @method('PUT')
+
                 <input type="password" name="current_password"
                     class="mt-1 px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#FF76CE] focus:ring-[#FF76CE] block w-full rounded-md sm:text-sm focus:ring-1"
                     placeholder="Password saat ini" />
 
-                <input type="password" name="password1"
+                <input type="password" name="password"
                     class="mt-1 px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#FF76CE] focus:ring-[#FF76CE] block w-full rounded-md sm:text-sm focus:ring-1"
                     placeholder="Password Baru" />
 
-                <input type="password" name="password1"
+                <input type="password" name="password_confirmation"
                     class="mt-1 px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#FF76CE] focus:ring-[#FF76CE] block w-full rounded-md sm:text-sm focus:ring-1"
                     placeholder="Ulangi Password" />
 
-            </form>
+                <!-- Tampilkan pesan error jika ada -->
+                @if ($errors->any())
+                <div class="mt-2 text-red-600">
+                    @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+                @endif
 
-            <!-- Tombol Submit dan Batal -->
-            <button type="submit"
-                class="bg-[#FF76CE] px-5 py-2 rounded-md font-bold mt-5 w-full text-center text-white">
-                Submit
-            </button>
-            <button type=""
-                class="bg-white px-5 py-2 border-2 border-[#FF76CE] rounded-md font-bold mt-3 w-full text-center text-[#FF76CE]"
-                onclick="closePassword()">
-                Batal
-            </button>
+                <!-- Tombol Submit dan Batal -->
+                <button type="submit"
+                    class="bg-[#FF76CE] px-5 py-2 rounded-md font-bold mt-5 w-full text-center text-white">
+                    Submit
+                </button>
+                <button type="button"
+                    class="bg-white px-5 py-2 border-2 border-[#FF76CE] rounded-md font-bold mt-3 w-full text-center text-[#FF76CE]"
+                    onclick="closePassword()">
+                    Batal
+                </button>
+            </form>
         </div>
     </div>
 </section>
@@ -231,4 +247,6 @@ window.onclick = function(event) {
     }
 };
 </script>
+
+
 @endsection

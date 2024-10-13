@@ -5,8 +5,6 @@ namespace App\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-// Pastikan menggunakan namespace yang benar
-
 class CatatanKesehatan extends Model
 {
     protected $table = 'catatan_kesehatan';

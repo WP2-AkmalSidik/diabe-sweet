@@ -17,7 +17,6 @@ class CatatanKesehatanController extends Controller
 
     public function storeOrUpdate(Request $request)
     {
-        // Validasi inputan
         $validatedData = $request->validate([
             'umur' => 'required|integer',
             'kategori' => 'required|string',

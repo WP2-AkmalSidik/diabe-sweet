@@ -27,6 +27,8 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->prefix('admin')->g
 Route::middleware(['auth', 'verified', 'rolemanager:user'])->prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('dashboard');
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::post('/profile/update', [UserController::class, 'updateProfile'])->name('profile.ubah');
+    Route::put('password', [UserController::class, 'updatePassword'])->name('password.update');
     Route::get('/kesehatan', [CatatanKesehatanController::class, 'kesehatan'])->name('kesehatan');
     Route::post('/kesehatan/simpan', [CatatanKesehatanController::class, 'storeOrUpdate'])->name('kesehatan.simpan');
     Route::delete('/kesehatan/{id}', [CatatanKesehatanController::class, 'destroy'])->name('kesehatan.delete');
