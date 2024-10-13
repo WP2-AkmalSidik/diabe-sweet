@@ -1,9 +1,10 @@
 <?php
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Models\CatatanKesehatan;
+use App\Models\RiwayatGula;
 use Illuminate\Http\Request;
+use App\Models\CatatanKesehatan;
+use App\Http\Controllers\Controller;
 
 class CatatanKesehatanController extends Controller
 {
@@ -52,7 +53,7 @@ class CatatanKesehatanController extends Controller
             ]);
         }
 
-        \App\Models\RiwayatGula::create([
+        RiwayatGula::create([
             'user_id' => auth()->user()->id,
             'gula' => $request->gula,
         ]);
@@ -65,8 +66,11 @@ class CatatanKesehatanController extends Controller
         $catatanKesehatan = CatatanKesehatan::where('id', $id)->where('user_id', auth()->user()->id)->first();
 
         if ($catatanKesehatan) {
+            $userId = auth()->user()->id;
             $catatanKesehatan->delete();
-            return redirect()->route('kesehatan')->with('success', 'Catatan kesehatan berhasil dihapus.');
+            RiwayatGula::where('user_id', $userId)->delete();
+
+            return redirect()->route('kesehatan')->with('success', 'Catatan kesehatan dan riwayat gula berhasil dihapus.');
         } else {
             return redirect()->route('kesehatan')->with('error', 'Catatan kesehatan tidak ditemukan atau tidak dapat dihapus.');
         }
