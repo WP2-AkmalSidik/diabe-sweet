@@ -52,8 +52,14 @@ class CatatanKesehatanController extends Controller
             ]);
         }
 
+        \App\Models\RiwayatGula::create([
+            'user_id' => auth()->user()->id,
+            'gula' => $request->gula,
+        ]);
+
         return redirect()->route('kesehatan')->with('success', 'Data berhasil disimpan!');
     }
+
     public function destroy($id)
     {
         $catatanKesehatan = CatatanKesehatan::where('id', $id)->where('user_id', auth()->user()->id)->first();

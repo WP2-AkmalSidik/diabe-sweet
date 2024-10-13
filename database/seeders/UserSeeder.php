@@ -51,5 +51,22 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        DB::table('users')->insert([
+            'name' => 'User2',
+            'alamat' => 'Jl. Contoh User', // opsional
+            'tinggi_badan' => 170, // opsional
+            'berat_badan' => 65, // opsional
+            'tanggal_lahir' => '2001-01-01', // opsional
+            'jenis_kelamin' => 'Pria', // atau 'Pria'
+            'no_hp' => '08123456789', // opsional
+            'foto' => null, // opsional
+            'role' => 0, // 0 untuk User
+            'email' => 'user2@diabesweet.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password123'), // ganti dengan password yang aman
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

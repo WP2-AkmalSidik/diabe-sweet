@@ -4,16 +4,22 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\CatatanKesehatan;
-use App\Models\User; // Pastikan untuk mengimpor model User
+use App\Models\RiwayatGula;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+// Pastikan untuk mengimpor model User
 
 class UserController extends Controller
 {
     public function index()
     {
-        return view('user.dashboard');
+        $user = auth()->user();
+        $riwayatGula = RiwayatGula::where('user_id', $user->id)->get();
+
+        return view('user.dashboard', compact('riwayatGula'));
     }
 
     public function profile()
