@@ -10,7 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <div class="w-full p-5 flex justify-center">
-            <div class="bg-[#FF76CE] rounded-xl w-[280px] h-[150px] p-3 shadow-lg flex items-end">
+            <div class="bg-white rounded-xl w-[280px] h-[150px] p-3 shadow-lg flex items-end">
                 <canvas id="gulaChart"></canvas>
             </div>
         </div>
@@ -29,9 +29,9 @@
                     datasets: [{
                         label: 'Gula Darah',
                         data: gulaData,
-                        backgroundColor: '#FFB2DE',
-                        borderColor: '#FFFFFF',
-                        borderWidth: 1,
+                        backgroundColor: '#FF76CE',
+                        // borderColor: '#ffffff',
+                        // borderWidth: 1,
                         // You can also change the label color here
                         // color: '#FFFFFF' // This is only effective in newer Chart.js versions
                     }]
@@ -40,20 +40,20 @@
                     scales: {
                         x: {
                             ticks: {
-                                color: '#FFFFFF'
+                                color: '#FF76CE'
                             }
                         },
                         y: {
                             beginAtZero: true,
                             ticks: {
-                                color: '#FFFFFF'
+                                color: '#FF76CE'
                             }
                         }
                     },
                     plugins: {
                         legend: {
                             labels: {
-                                color: '#FFFFFF'
+                                color: '#FF76CE'
                             }
                         }
                     }

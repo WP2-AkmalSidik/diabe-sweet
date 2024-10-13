@@ -11,7 +11,7 @@
                     stroke-linejoin="round" />
             </svg>
         </a>
-        <h1 class="text-xl font-bold text-[#FF76CE] ml-[5rem]">Dokter Kami</h1>
+        <h1 class="text-xl font-bold text-[#FF76CE] ml-[3.8rem]">Dukungan Sosial</h1>
     </div>
 
     <h2 class="mt-16 text-center font-semibold text-[0.9rem]">
@@ -28,8 +28,8 @@
                 <h1 class="text-[0.6rem] font-semibold">Apa itu diabetes?</h1>
 
                 <div class="flex flex-row gap-4 mt-2">
-                    <img src="../assets/tahun.svg" alt="" />
-                    <img src="../assets/rating.svg" alt="" />
+                    <img src="../assets/question.svg" alt="" />
+                    <img src="../assets/information.svg" alt="" />
                 </div>
             </div>
 
@@ -46,8 +46,8 @@
                 <h1 class="text-[0.6rem] font-semibold">Bagaimana cara memilih makanan yang sehat?</h1>
 
                 <div class="flex flex-row gap-4 mt-2">
-                    <img src="../assets/tahun.svg" alt="" />
-                    <img src="../assets/rating.svg" alt="" />
+                    <img src="../assets/question.svg" alt="" />
+                    <img src="../assets/information.svg" alt="" />
                 </div>
             </div>
 
@@ -58,14 +58,14 @@
         </div>
 
         <div class="bg-white border-2 border-[#FF76CE] rounded-xl p-1.5 flex flex-row justify-between items-center">
-            <img src="{{asset('assets/obat kedua.png')}}" alt="" class="h-16" />
+            <img src="{{asset('assets/obat kedua.png')}}" alt="" class="h-16 w-[3.8rem]" />
 
             <div class="flex flex-col gap-1 w-[120px]">
                 <h1 class="text-[0.6rem] font-semibold">Siapa saja yang beresiko terkena penyakit Diabetes?</h1>
 
                 <div class="flex flex-row gap-4 mt-2">
-                    <img src="../assets/tahun.svg" alt="" />
-                    <img src="../assets/rating.svg" alt="" />
+                    <img src="../assets/question.svg" alt="" />
+                    <img src="../assets/information.svg" alt="" />
                 </div>
             </div>
 
