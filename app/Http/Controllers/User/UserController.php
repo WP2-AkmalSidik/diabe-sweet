@@ -18,8 +18,20 @@ class UserController extends Controller
     {
         $user = auth()->user();
         $riwayatGula = RiwayatGula::where('user_id', $user->id)->get();
+        $catatanKesehatan = CatatanKesehatan::where('user_id', $user->id)->latest()->first();
+        $gulaDarah = $catatanKesehatan ? $catatanKesehatan->gula : null;
 
-        return view('user.dashboard', compact('riwayatGula'));
+        if ($gulaDarah === null) {
+            $statusDiabetes = 'Data Gula Tidak Tersedia';
+        } elseif ($gulaDarah < 140) {
+            $statusDiabetes = 'Non Diabetes';
+        } elseif ($gulaDarah < 200) {
+            $statusDiabetes = 'Waspada';
+        } else {
+            $statusDiabetes = 'Diabetes';
+        }
+
+        return view('user.dashboard', compact('riwayatGula', 'user', 'statusDiabetes'));
     }
 
     public function profile()
@@ -36,7 +48,7 @@ class UserController extends Controller
         } elseif ($gulaDarah < 200) {
             $statusDiabetes = 'Waspada';
         } else {
-            $statusDiabetes = 'Diabetes Parah';
+            $statusDiabetes = 'Diabetes';
         }
 
         return view('user.profile', [

@@ -88,8 +88,8 @@
                 $gula = $catatanKesehatan->gula ?? 0;
                 if ($gula < 140) { $kategoriDiabetes='Non Diabetes' ; $borderColor='green-500' ; } elseif ($gula < 200)
                     { $kategoriDiabetes='Waspada' ; $borderColor='yellow-400' ; } else {
-                    $kategoriDiabetes='Diabetes Parah' ; $borderColor='red-500' ; } @endphp <div
-                    class="h-[60px] w-[60px] rounded-full border-[8px] border-{{ $borderColor }} text-black flex flex-col justify-center items-center">
+                    $kategoriDiabetes='Diabetes' ; $borderColor='red-500' ; } @endphp
+                    <div class="h-[60px] w-[60px] rounded-full border-[8px] border-{{ $borderColor }} text-black flex flex-col justify-center items-center">
                     <h1 class="font-bold text-[1.5rem] text-{{ $borderColor }}">!</h1>
             </div>
             <h1 class="text-sm text-center font-bold text-{{ $borderColor }} p-2">{{ $kategoriDiabetes }}</h1>

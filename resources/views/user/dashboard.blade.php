@@ -2,14 +2,25 @@
 @section('content')
 <section
     class="h-[100vh] w-[350px] m-auto overflow-hidden bg-white scale-90 bg-cover bg-center rounded-3xl flex flex-col items-center">
-    <div class="rounded-3xl h-[38%] w-full bg-[#FF76CE] p-6 flex flex-col justify-between items-center">
+    <div class="rounded-3xl h-[42%] w-full bg-[#FF76CE] p-6 flex flex-col justify-between items-center">
+        <div class="w-full">
+            <h1 class="text-lg text-start font-bold text-white">Selamat Datang, <br>{{ $user->name }}</h1>
+            <h1 class="text-[0.7rem] w-fit px-3 py-1 text-start font-bold rounded-full mt-1 text-white
+                bg-{{ 
+                    $statusDiabetes == 'Waspada' ? 'yellow-500' : 
+                    ($statusDiabetes == 'Non Diabetes' ? 'green-500' : 
+                    ($statusDiabetes == 'Diabetes' ? 'red-500' : 'black'))
+                }}">
+                    {{ $statusDiabetes }}
+            </h1>
+        </div>
         <div class="flex flex-col gap-3">
-            <h1 class="text-xl font-bold text-white text-center mt-4">Grafik Gula Darah
+            <h1 class="text-base font-bold text-white text-center mt-2">Grafik Gula Darah
             </h1>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <div class="w-full p-5 flex justify-center">
+        <div class="w-full p-2 flex justify-center">
             <div class="bg-white rounded-xl w-[280px] h-[150px] p-3 shadow-lg flex items-end">
                 <canvas id="gulaChart"></canvas>
             </div>

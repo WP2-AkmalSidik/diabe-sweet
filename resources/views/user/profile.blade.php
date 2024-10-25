@@ -23,7 +23,16 @@
         <div class="flex flex-row justify-between items-end">
             <div class="flex flex-col gap-2">
                 <h1 class="text-xl font-bold text-black mt-[3rem]">{{ $user->name }}</h1>
-                <h2 class="text-base text-[#FF76CE] font-semibold">{{ $statusDiabetes }}</h2>
+                @php
+                    $textColor = match($statusDiabetes) {
+                        'Non Diabetes' => 'text-green-500',
+                        'Waspada' => 'text-yellow-400',
+                        'Diabetes' => 'text-red-500',
+                        default => 'text-black',
+                    };
+                @endphp
+
+                <h2 class="text-base font-semibold {{ $textColor }}">{{ $statusDiabetes }}</h2>
             </div>
 
             <a href="#" class="p-2 bg-[#FF76CE] rounded-lg flex items-center justify-center mb-1" onclick="openModal()">
