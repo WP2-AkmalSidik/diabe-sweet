@@ -4,7 +4,7 @@
 <section
     class="h-[730px] w-[350px] m-auto overflow-hidden bg-[#FF76CE] bg-cover bg-center rounded-3xl flex flex-col items-center p-7 container-snap overflow-y-auto scale-90">
     <div class="w-full flex flex-row justify-between items-center">
-        <h1 class="text-xl text-start font-bold text-white mb-5">Selamat Datang, <br>Petugas</h1>
+        <h1 class="text-xl text-start font-bold text-white mb-5">Selamat Datang, <br>{{ $petugas->name }}</h1>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit">

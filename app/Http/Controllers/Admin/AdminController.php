@@ -7,6 +7,7 @@ use App\Models\CatatanKesehatan;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class AdminController extends Controller
@@ -27,7 +28,9 @@ class AdminController extends Controller
                 return $user;
             });
 
-        return view('admin.admin', compact('users'));
+        $petugas = Auth::user();
+
+        return view('admin.admin', compact('users', 'petugas'));
     }
 
     public function show($id)
