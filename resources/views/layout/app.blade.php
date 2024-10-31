@@ -25,7 +25,7 @@
 </style>
   @vite('resources/css/app.css')
 </head>
-<body class="w-[100wh] bg-slate-400">
+<body class="w-[100wh] h-screen bg-slate-400 sm:w-full flex justify-center items-center">
     @yield('content')
 </body>
 </html>

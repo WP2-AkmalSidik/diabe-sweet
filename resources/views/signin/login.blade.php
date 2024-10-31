@@ -4,7 +4,7 @@
 <section
     class="h-[100vh] w-[350px] m-auto overflow-hidden bg-[url('../assets/bg-dokter.png')] scale-90 bg-cover bg-center rounded-3xl flex flex-col bg-white">
 
-    <div class="h-[450px] w-full bg-[#FF76CE]/60 flex flex-row items-center justify-center">
+    <div class="h-[450px] w-full bg-[#FF76CE]/60 flex flex-row items-center justify-center rounded-b-[3rem]">
         <h1 class="font-bold absolute top-24 text-2xl text-white text-center">SELAMAT DATANG <br> <span
                 class="text-center">Di Aplikasi Diabe-Sweet</span></h1>
         <div

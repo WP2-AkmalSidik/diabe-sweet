@@ -1,16 +1,17 @@
 @extends('layout.app')
 @section('content')
 <section
-    class="h-[100vh] w-[350px] m-auto overflow-hidden bg-[#FF76CE] scale-90 bg-cover bg-center rounded-3xl flex flex-col items-center p-7 container-snap overflow-y-auto">
-    <a href="{{route('dashboard')}}" class="absolute left-7 top-8">
-        <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="scale-75">
-            <path d="M11 2L2 11L11 20" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </a>
-
-    <h1 class="text-xl font-bold text-white text-center">
-        Catatan Kesehatan
-    </h1>
+    class="h-[730px] w-[350px] m-auto overflow-hidden bg-[#FF76CE] bg-cover bg-center rounded-3xl flex flex-col items-center p-7 container-snap overflow-y-auto scale-90">
+    <div class="flex flex-row items-center w-full">
+        <a href="{{route('dashboard')}}">
+            <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="scale-75">
+                <path d="M11 2L2 11L11 20" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+        <h1 class="text-xl font-bold text-white text-center ml-12">
+            Catatan Kesehatan
+        </h1>
+    </div>
 
     <h2 class="mt-2 text-center font-semibold text-[0.8rem] text-white">
         Konsumsi Obat Tepat Jadwal <br />Untuk Jaga Gula Darah Anda
@@ -90,22 +91,22 @@
                     { $kategoriDiabetes='Waspada' ; $borderColor='yellow-400' ; } else {
                     $kategoriDiabetes='Diabetes' ; $borderColor='red-500' ; } @endphp
                     <div class="h-[60px] w-[60px] rounded-full border-[8px] border-{{ $borderColor }} text-black flex flex-col justify-center items-center">
-                    <h1 class="font-bold text-[1.5rem] text-{{ $borderColor }}">!</h1>
+                        <h1 class="font-bold text-[1.5rem] text-{{ $borderColor }}">!</h1>
+                    </div>
+                <h1 class="text-sm text-center font-bold text-{{ $borderColor }} p-2">{{ $kategoriDiabetes }}</h1>
             </div>
-            <h1 class="text-sm text-center font-bold text-{{ $borderColor }} p-2">{{ $kategoriDiabetes }}</h1>
-        </div>
 
-        <div class="bg-white w-full flex flex-col justify-between items-center rounded-xl">
-            <h1 class="text-base font-semibold text-black p-2">Konsumsi Air</h1>
-            <img src="{{ asset('assets/animasi-air.png') }}" alt="" class="h-[60px]" />
-            @php
-            $berat = $catatanKesehatan->berat ?? 0;
-            $konsumsiAir = ($berat * 30) / 1000; // dalam liter
-            $gelas = ceil($konsumsiAir / 0.25); // 1 gelas = 0.25 liter
-            @endphp
-            <h1 class="text-sm text-center font-bold text-black p-2">{{ $gelas }} Gelas<br />Per Hari</h1>
+            <div class="bg-white w-full flex flex-col justify-between items-center rounded-xl">
+                <h1 class="text-base font-semibold text-black p-2">Konsumsi Air</h1>
+                <img src="{{ asset('assets/animasi-air.png') }}" alt="" class="h-[60px]" />
+                @php
+                $berat = $catatanKesehatan->berat ?? 0;
+                $konsumsiAir = ($berat * 30) / 1000; // dalam liter
+                $gelas = ceil($konsumsiAir / 0.25); // 1 gelas = 0.25 liter
+                @endphp
+                <h1 class="text-sm text-center font-bold text-black p-2">{{ $gelas }} Gelas<br />Per Hari</h1>
+            </div>
         </div>
-    </div>
 
     <div class="flex flex-row gap-4">
         <div class="bg-white w-full flex flex-col justify-between items-center rounded-xl gap-2">

@@ -3,7 +3,7 @@
 @section('content')
 
 <section
-    class="h-[100vh] w-[350px] m-auto overflow-hidden bg-[#FF76CE] scale-90 bg-cover bg-center rounded-3xl flex flex-col items-center p-6">
+    class="h-[730px] w-[350px] m-auto overflow-hidden bg-[#FF76CE] bg-cover bg-center rounded-3xl flex flex-col items-center p-6 container-snap overflow-y-auto scale-90">
     <h1 class="text-xl font-semibold mt-8 text-white">Profil Pengguna</h1>
 
     <div

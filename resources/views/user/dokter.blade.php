@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
 <section
-    class="h-[100vh] w-[350px] m-auto overflow-hidden bg-white scale-90 bg-cover bg-center rounded-3xl flex flex-col items-center p-7">
+    class="h-[730px] w-[350px] m-auto overflow-hidden bg-white bg-cover bg-center rounded-3xl flex flex-col items-center p-7 container-snap overflow-y-auto scale-90">
     <div class="flex flex-row items-center justify-start mt-4 absolute left-7">
         <a href="{{route('dashboard')}}">
             <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg"

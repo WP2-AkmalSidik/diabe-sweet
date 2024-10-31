@@ -31,7 +31,7 @@ class UserController extends Controller
             $statusDiabetes = 'Diabetes';
         }
 
-        return view('user.dashboard', compact('riwayatGula', 'user', 'statusDiabetes'));
+        return view('user.dashboard', compact('riwayatGula', 'user', 'statusDiabetes', 'catatanKesehatan'));
     }
 
     public function profile()

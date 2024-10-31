@@ -1,10 +1,11 @@
 @extends('layout.app')
 @section('content')
 <section
-    class="h-[100vh] w-[350px] m-auto overflow-hidden bg-white scale-90 bg-cover bg-center rounded-3xl flex flex-col items-center">
-    <div class="rounded-3xl h-[42%] w-full bg-[#FF76CE] p-6 flex flex-col justify-between items-center">
+    class="h-[730px] w-[350px] m-auto overflow-hidden bg-white bg-cover bg-center rounded-3xl flex flex-col items-center container-snap overflow-y-auto scale-90">
+    
+    <div class="rounded-3xl h-[40%] w-full bg-[#FF76CE] p-6 flex flex-col items-center">
         <div class="w-full">
-            <h1 class="text-lg text-start font-bold text-white">Selamat Datang, <br>{{ $user->name }}</h1>
+            <h1 class="text-lg text-start font-bold text-white">Halo, {{ $user->name }}</h1>
             <h1 class="text-[0.7rem] w-fit px-3 py-1 text-start font-bold rounded-full mt-1 text-white
                 bg-{{ 
                     $statusDiabetes == 'Waspada' ? 'yellow-500' : 
@@ -14,63 +15,52 @@
                     {{ $statusDiabetes }}
             </h1>
         </div>
-        <div class="flex flex-col gap-3">
-            <h1 class="text-base font-bold text-white text-center mt-2">Grafik Gula Darah
-            </h1>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-        <div class="w-full p-2 flex justify-center">
-            <div class="bg-white rounded-xl w-[280px] h-[150px] p-3 shadow-lg flex items-end">
-                <canvas id="gulaChart"></canvas>
+        <div class="flex flex-row justify-between items-center gap-3 w-full px-2 h-full mt-6">
+            <div class="w-[80px] bg-red-500 text-white flex flex-col px-2 py-4 rounded-lg gap-2 h-full justify-between">
+                <img src="{{ asset('assets/gdt.svg') }}" alt="" class="h-6 w-9">
+                <h2 class="text-xs leading-tight">Gula <br>Darah <br>Terakhir</h2>
+                <div class="flex flex-col">
+                    <h1 class="text-yellow-300 font-bold text-center">{{ $catatanKesehatan->gula ?? 0 }}</h1>
+                    <h1 class="text-xs text-center">mg/dL</h1>
+                </div>
             </div>
+            <div class="w-[80px] bg-[#FFF45C] text-black flex flex-col px-2 py-4 rounded-lg gap-2 h-full justify-between">
+                <img src="{{ asset('assets/td.svg') }}" alt="" class="h-6 w-6">
+                <h2 class="text-xs leading-tight">Tekanan <br>Darah</h2>
+                <div class="flex flex-col">
+                    <h1 class="text-red-500 font-bold text-center">{{ $catatanKesehatan->sistolik ?? 0 }}/{{ $catatanKesehatan->diastolik ?? '0' }}</h1>
+                    <h1 class="text-xs text-center">mmHg</h1>
+                </div>
+            </div>
+            <div class="w-[80px] bg-[#1782A3] text-white flex flex-col px-2 py-4 rounded-lg gap-2 h-full justify-between">
+                <img src="{{ asset('assets/imt.svg') }}" alt="" class="h-6 w-9">
+                <h2 class="w-full text-xs leading-tight">Index <br>Masa <br>Tubuh</h2>
+                <div class="flex flex-col">
+                    @php
+                        $imt = $catatanKesehatan && $catatanKesehatan->berat && $catatanKesehatan->tinggi 
+                            ? $catatanKesehatan->berat / (($catatanKesehatan->tinggi / 100) ** 2) 
+                            : 0;
+                            $keterangan = '';
+                        if ($imt < 18.5 && $imt >= 17) {
+                            $keterangan = 'Kurus';
+                        } elseif ($imt >= 18.5 && $imt <= 25) {
+                            $keterangan = 'Normal';
+                        } elseif ($imt > 25 && $imt <= 27) {
+                            $keterangan = 'Gemuk';
+                        } elseif ($imt > 27) {
+                            $keterangan = 'Obesitas';
+                        } else {
+                            $keterangan = 'None';
+                        }
+                    @endphp
+                    <h1 class="font-bold text-center">{{ number_format($imt, 2) }}</h1>
+                    <h1 class="text-xs text-center">{{ $keterangan }}</h1>
+                </div>
+            </div>
+            {{-- <h1 class="text-base font-bold text-white text-center mt-2">Grafik Gula Darah
+            </h1> --}}
         </div>
-
-        <script>
-            const ctx = document.getElementById('gulaChart').getContext('2d');
-            const gulaData = @json($riwayatGula->pluck('gula'));
-            const labels = @json($riwayatGula->pluck('created_at')->map(function($date) {
-                return $date->format('d M');
-            }));
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Gula Darah',
-                        data: gulaData,
-                        backgroundColor: '#FF76CE',
-                        // borderColor: '#ffffff',
-                        // borderWidth: 1,
-                        // You can also change the label color here
-                        // color: '#FFFFFF' // This is only effective in newer Chart.js versions
-                    }]
-                },
-                options: {
-                    scales: {
-                        x: {
-                            ticks: {
-                                color: '#FF76CE'
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                color: '#FF76CE'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#FF76CE'
-                            }
-                        }
-                    }
-                }
-            });
-        </script>
+        
 
     </div>
 
