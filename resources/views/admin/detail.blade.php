@@ -2,46 +2,44 @@
 
 @section('content')
 <section
-    class="h-auto w-full max-w-md mx-auto overflow-hidden bg-white bg-center rounded-3xl flex flex-col items-center p-7 container-snap overflow-y-auto scale-90">
+    class="h-[730px] w-[350px] m-auto overflow-hidden bg-white bg-cover bg-center rounded-3xl flex flex-col items-center p-7 gap-y-4 container-snap overflow-y-auto scale-90">
 
     <!-- Header -->
-    <h1 class="text-2xl font-bold text-center text-[#FF76CE] uppercase mb-4">Detail Pengguna</h1>
+    <h1 class="text-2xl font-bold text-center text-[#FF76CE] uppercase">Detail Pengguna</h1>
 
     <!-- Foto Profil di Tengah Atas -->
-    <div class="bg-white h-[120px] w-[120px] rounded-full overflow-hidden border-4 border-[#FF76CE] shadow-md mb-6">
-        <img src="{{ $user->foto ? asset('storage/' . $user->foto) : asset('assets/user.svg') }}" alt="User Profile"
-            class="rounded-full h-full w-full object-cover">
-    </div>
+    <img src="{{ $user->foto ? asset('storage/' . $user->foto) : asset('assets/user.svg') }}" alt="User Profile"
+        class="rounded-full h-[120px] w-[120px] object-cover h">
 
     <!-- Data Pengguna -->
-    <div class="flex flex-col gap-4 w-full text-black font-semibold">
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
-            <p>Nama: {{ $user->name }}</p>
+    <div class="flex flex-col gap-y-2 w-full text-black font-semibold">
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
+            Nama: {{ $user->name }}
         </div>
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
-            <p>Alamat: {{ $user->alamat }}</p>
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
+            Alamat: {{ $user->alamat }}
         </div>
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
-            <p>Tinggi Badan: {{ $user->tinggi_badan }} cm</p>
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
+            Tinggi Badan: {{ $user->tinggi_badan }} cm
         </div>
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
-            <p>Berat Badan: {{ $user->berat_badan }} kg</p>
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
+            Berat Badan: {{ $user->berat_badan }} kg
         </div>
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
-            <p>Umur: {{ \Carbon\Carbon::parse($user->tanggal_lahir)->age }} Tahun</p>
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
+            Umur: {{ \Carbon\Carbon::parse($user->tanggal_lahir)->age }} Tahun
         </div>
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
-            <p>Jenis Kelamin: {{ $user->jenis_kelamin }}</p>
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
+            Jenis Kelamin: {{ $user->jenis_kelamin }}
         </div>
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
-            <p>No. HP: {{ $user->no_hp }}</p>
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
+            No. HP: {{ $user->no_hp }}
         </div>
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
-            <p>Email: {{ $user->email }}</p>
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
+            Email: {{ $user->email }}
         </div>
 
         <!-- Informasi Tambahan Kesehatan -->
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
             <p>Kategori Diabetes:
                 @php
                 $gula = $catatanKesehatan->gula ?? 0;
@@ -56,7 +54,7 @@
             <p>Gula Darah: {{ $gula }} mg/dL</p>
         </div>
 
-        <div class="px-4 py-2 bg-gray-100 rounded-lg shadow-md text-center">
+        <div class="mt-1 px-3 py-3 bg-gray-200 border-2 shadow-sm border-gray-500 block w-full rounded-md sm:text-sm focus:ring-1 text-center">
             <p>Berat Badan Ideal:
                 @php
                 $tinggiM = ($user->tinggi_badan ?? 1) / 100; // Pastikan tinggi tidak 0
@@ -80,6 +78,6 @@
 
     <!-- Tombol Kembali -->
     <a href="{{ route('admin') }}"
-        class="bg-[#FF76CE] px-5 py-3 rounded-md font-bold mt-6 w-full text-center text-white">Kembali</a>
+        class="bg-[#FF76CE] px-5 py-3 rounded-md font-bold mt-2 w-full text-center text-white">Kembali</a>
 </section>
 @endsection

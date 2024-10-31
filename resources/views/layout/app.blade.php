@@ -25,13 +25,13 @@
     }
     </style>
     @vite('resources/css/app.css')
-    @livewireStyles
+    {{-- @livewireStyles --}}
 
 </head>
 
 <body class="w-[100wh] h-screen bg-slate-400 sm:w-full flex justify-center items-center">
     @yield('content')
-    @livewireScripts
+    {{-- @livewireScripts --}}
 
 </body>
 
