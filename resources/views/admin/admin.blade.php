@@ -20,12 +20,12 @@
     <h1 class="text-base font-bold text-white text-center">Data Pengguna</h1>
 
     <div class="w-full mt-4 flex flex-row justify-between">
-        <div class="w-[70%] bg-white rounded-xl">
-            <input type="text" name="search" id="search" placeholder="Cari Pengguna"
+        <form method="GET" action="{{ route('admin') }}" class="w-[70%] bg-white rounded-xl">
+            <input type="text" name="search" id="search" placeholder="Cari Pengguna" value="{{ request('search') }}"
                 class="w-full rounded-xl border-none placeholder-slate-400 focus:outline-none focus:border-black focus:ring-black"
                 required>
-        </div>
-        <button type="button"
+        </form>
+        <button type="submit" form="search-form"
             class="w-[25%] bg-black text-white flex items-center justify-center rounded-xl">Search</button>
     </div>
 
