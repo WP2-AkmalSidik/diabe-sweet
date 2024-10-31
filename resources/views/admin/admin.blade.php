@@ -41,7 +41,8 @@
             <h1 class="text-sm text-center font-semibold text-black p-2">{{ $user->umur }} Tahun
                 <br />{{ strtoupper($user->alamat_singkat) }}
             </h1>
-            <a href="#" class="bg-[#FF76CE] py-1 px-3 rounded-full text-[0.7rem] text-white font-semibold">Detail</a>
+            <a href="{{ route('admin.detail', ['id' => $user->id]) }}"
+                class="bg-[#FF76CE] py-1 px-3 rounded-full text-[0.7rem] text-white font-semibold">Detail</a>
         </div>
         @endforeach
     </div>

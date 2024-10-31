@@ -21,6 +21,7 @@ Route::get('/diabe-sweet', function () {
 //Admin Routes
 Route::middleware(['auth', 'verified', 'rolemanager:admin'])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/user/{id}', [AdminController::class, 'show'])->name('admin.detail');
 });
 
 //user Routes

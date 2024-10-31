@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CatatanKesehatan;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,10 +13,8 @@ class AdminController extends Controller
 {
     public function index(Request $request)
     {
-        // Mengambil query dari input pencarian
         $query = $request->input('search');
 
-        // Filter pengguna dengan role 0 dan berdasarkan pencarian
         $users = User::where('role', 0)
             ->when($query, function ($queryBuilder) use ($query) {
                 $queryBuilder->where('name', 'like', "%$query%");
@@ -29,5 +28,15 @@ class AdminController extends Controller
             });
 
         return view('admin.admin', compact('users'));
+    }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        $catatanKesehatan = CatatanKesehatan::where('user_id', $id)
+            ->latest()
+            ->first();
+
+        return view('admin.detail', compact('user', 'catatanKesehatan'));
     }
 }
